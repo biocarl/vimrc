@@ -1,0 +1,14 @@
+/yankring_history*
+/viminfo
+/swap
+/after
+doc/tags
+.netrwhist
+/undo
+/bundle
+/session
+autoload
+swap
+UltiSnips
+undo
+viminfo
