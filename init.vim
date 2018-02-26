@@ -95,7 +95,8 @@ tnoremap <Esc> <C-\><C-n>
 " nnoremap <Space> i_<Esc>r
 "Open terminal in new tab and go in insert mode
 command TT :tabe term://bash | startinsert
-command Config :tabe $MYVIMRC 
+command Config :tabe drop $MYVIMRC 
+command Todo :tabe drop ~/TODOS.md 
 "Fold all lines based on intent
 command FA :setlocal foldmethod=indent 
 "Print buffernummer
