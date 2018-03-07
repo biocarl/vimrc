@@ -2,7 +2,7 @@ let os = substitute(system('uname'), "\n", "", "")
 " SOURCE: https://github.com/gacha/nvim-config
 " Path vars for interpreters
 let g:python3_host_prog  = '/usr/bin/python3'
-let g:ruby_host_prog = '/home/antonio/.rbenv/versions/2.2.4/bin/ruby'
+let g:ruby_host_prog = '/home/carl/.rbenv/versions/2.2.4/bin/ruby'
 call system("rbenv local 2.2.4") "for plugins which use gems of that version
 
 call plug#begin('~/.vim/plugged')
@@ -11,6 +11,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'szw/vim-g' "Google search from VIM Command
 Plug 'nelstrom/vim-visual-star-search' "Search current selection in visual mode
 Plug 'machakann/vim-highlightedyank' "Highlighted yanked region
+Plug 'mhinz/vim-startify'
+
 
 
 """"""""""""""
@@ -44,7 +46,7 @@ Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-haml'
 Plug 'tomtom/tcomment_vim'
 Plug 'nelstrom/vim-textobj-rubyblock'
-  Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-user'
 Plug 'thinca/vim-localrc'
 Plug 'jgdavey/vim-blockle'
 Plug 'othree/html5.vim'
@@ -95,8 +97,9 @@ tnoremap <Esc> <C-\><C-n>
 " nnoremap <Space> i_<Esc>r
 "Open terminal in new tab and go in insert mode
 command TT :tabe term://bash | startinsert
-command Config :tabe drop $MYVIMRC 
-command Todo :tabe drop ~/TODOS.md 
+command Config :tabe $MYVIMRC 
+" command Todo :tabe drop ~/TODOS.md 
+command Todo :tabe ~/TODOS.md 
 "Fold all lines based on intent
 command FA :setlocal foldmethod=indent 
 "Print buffernummer
@@ -115,6 +118,12 @@ map <Leader>p "*p
 "Insert newline without insert mode and jump
 nmap <Leader>O O<Esc>j
 nmap <Leader>o o<Esc>k
+
+"double leaders
+map <Leader><Leader> :
+
+" clear highlight
+" map <Leader><Leader>h :set hlsearch!<CR>
 
 "Rails related
 command Shutdown :!kill -INT $(cat tmp/pids/server.pid)
@@ -179,8 +188,7 @@ nnoremap <Leader>tc :call neoterm#close_all()<cr>
 " clear terminal
 nnoremap <Leader>tl :call neoterm#clear()<cr>
 
-" clear highlight
-map <Leader><Leader>h :set hlsearch!<CR>
+
 
 " regenerate CTAGS with ripper-tags and coffeetags
 map <Leader>ct :silent !/home/antonio/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/ripper-tags-0.5.0/bin/ripper-tags -R --exclude=vendor -R -a -f tags<CR>
@@ -250,6 +258,8 @@ cnoreabbrev AG Ack
 
 "Own changes
 set inccommand=split 
+set clipboard=unnamedplus
+
 
 " Status Line {  
 set laststatus=2                             " always show statusbar  
